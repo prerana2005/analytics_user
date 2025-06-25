@@ -1,0 +1,38 @@
+name: Risk Check on PR
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  analyze-risk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout this repo (analytics-user)
+        uses: actions/checkout@v3
+
+      - name: Checkout Code_Review_Analytics repo
+        uses: actions/checkout@v3
+        with:
+          repository: prerana2005/Code_Review_Analytics
+          path: Code_Review_Analytics
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install requirements
+        run: |
+          pip install -r Code_Review_Analytics/requirements.txt
+
+      - name: Run Risk Analysis
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python Code_Review_Analytics/run_analysis.py \
+            --repo_owner "${{ github.repository_owner }}" \
+            --repo_name "${{ github.event.repository.name }}" \
+            --pr_number ${{ github.event.pull_request.number }}
