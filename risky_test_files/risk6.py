@@ -19,5 +19,8 @@ def risk6(x):
         print("Nine")
     elif x == 10:
         print("Ten")
+
+    print("Trigger risky PR")
+
     else:
         print("Other")
