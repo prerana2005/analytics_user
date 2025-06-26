@@ -28,11 +28,12 @@ jobs:
         run: |
           pip install -r Code_Review_Analytics/requirements.txt
 
-      - name: Run Risk Analysis
+      - name: Run Risk Analysis via CLI
+        working-directory: Code_Review_Analytics
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python Code_Review_Analytics/run_analysis.py \
+          python -m pr_risk_checker.cli \
             --repo_owner "${{ github.repository_owner }}" \
             --repo_name "${{ github.event.repository.name }}" \
             --pr_number ${{ github.event.pull_request.number }}
