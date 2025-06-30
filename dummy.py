@@ -1,17 +1,32 @@
-def factorial(n):
-    if n == 0:
-        return 1
-    else:
-        return n * factorial(n-1)
+def fibonacci(n):
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    seq = [0, 1]
+    for _ in range(2, n):
+        seq.append(seq[-1] + seq[-2])
+    return seq
 
-def complex_function(x):
-    if x > 0:
-        for i in range(x):
-            if i % 2 == 0:
-                print(factorial(i))
+def process_numbers(x):
+    results = []
+    if x < 10:
+        for i in range(1, x + 1):
+            if i % 3 == 0:
+                results.append(i ** 2)
             else:
-                for j in range(i):
-                    print(j)
-                    
-# re-triggering workflow
-# retrigger
+                results.append(i + 5)
+    else:
+        i = 0
+        while i < x:
+            if i % 4 == 0:
+                results.append(i)
+            i += 2
+    return results
+
+if __name__ == "__main__":
+    print(fibonacci(7))
+    print(process_numbers(12))
