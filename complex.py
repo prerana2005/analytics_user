@@ -1,4 +1,3 @@
-# complex 
 def complex_function(x):
     if x > 0:
         print("Positive")
@@ -22,3 +21,5 @@ def complex_function(x):
         print("Divisible by 17")
     if x % 19 == 0:
         print("Divisible by 19")
+    
+    print("Just a dummy update for testing risky PR detection.")
