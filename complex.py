@@ -22,4 +22,4 @@ def complex_function(x):
     if x % 19 == 0:
         print("Divisible by 19")
     
-    print("Just a dummy update for testing risky PR detection.")
+    print("Just a dummy update")
