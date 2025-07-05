@@ -1,4 +1,4 @@
-# complex f
+# complex func
 def complex_function(x):
     if x > 0:
         print("Positive")
