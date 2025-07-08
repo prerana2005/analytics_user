@@ -1,27 +1,27 @@
-# complex function
-def complex_function(x):
-    if x > 0:
-        print("Positive")
-    if x < 0:
-        print("Negative")
-    if x == 0:
-        print("Zero")
-    if x % 2 == 0:
-        print("Even")
-    if x % 3 == 0:
-        print("Divisible by 3")
-    if x % 5 == 0:
-        print("Divisible by 5")
-    if x % 7 == 0:
-        print("Divisible by 7")
-    if x % 11 == 0:
-        print("Divisible by 11")
-    if x % 13 == 0:
-        print("Divisible by 13")
-    if x % 17 == 0:
-        print("Divisible by 17")
-    if x % 19 == 0:
-        print("Divisible by 19")
-    
-    print("Just a dummy update")
-#complex
+# complex function to trigger risk
+def risky_math(x, y, z):
+    if x > 10:
+        if y < 5:
+            print("Case A")
+        elif y > 100:
+            if z % 2 == 0:
+                print("Case B")
+            else:
+                if x + y > z:
+                    print("Case C")
+                else:
+                    print("Case D")
+        else:
+            for i in range(10):
+                if i % 3 == 0:
+                    print(i)
+    elif x < 0:
+        print("Negative X")
+        if x == -1:
+            print("Special case -1")
+        elif x == -100:
+            print("Special case -100")
+        else:
+            print("Generic negative")
+    else:
+        print("Neutral")
