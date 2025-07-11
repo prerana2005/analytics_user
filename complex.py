@@ -1,4 +1,4 @@
-# complex fun
+# complex func
 def risky_math(x, y, z):
     if x > 10:
         if y < 5:
