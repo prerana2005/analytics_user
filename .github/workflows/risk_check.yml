@@ -35,3 +35,13 @@ jobs:
           repo_name: ${{ github.event.repository.name }}
           pr_number: ${{ github.event.pull_request.number }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Assign senior reviewer if risky
+        if: steps.run_risk.outputs.is_risky == 'true'
+        run: |
+          echo "Assigning senior reviewer to risky PR..."
+          gh pr edit ${{ github.event.pull_request.number }} \
+            --repo "${{ github.repository }}" \
+            --add-reviewer senior-dev-username
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
