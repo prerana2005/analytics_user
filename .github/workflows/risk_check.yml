@@ -36,3 +36,16 @@ jobs:
           repo_name: ${{ github.event.repository.name }}
           pr_number: ${{ github.event.pull_request.number }}
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Assign reviewer if risky
+        if: steps.riskcheck.outputs.is_risky == 'true'
+        run: |
+          python pr_risk_checker/assign_reviewer.py
+        working-directory: Code_Review_Analytics
+        env:
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          REVIEWERS: "senior-reviewer"
